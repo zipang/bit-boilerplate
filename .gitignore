@@ -1,0 +1,17 @@
+# System trash files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+*~
+
+.bit/
+.bitmap
+.vscode/
+
+*.log
+
+# This repo can have sub-projects with their own dependencies
+**/node_modules/
