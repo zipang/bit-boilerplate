@@ -1,6 +1,6 @@
 {
     "env": {},
     "dependencies": {},
-    "componentsDefaultDirectory": "components/{namespace}/{name}",
-    "packageManager": "npm"
+    "componentsDefaultDirectory": "src/{name}",
+    "packageManager": "yarn"
 }
