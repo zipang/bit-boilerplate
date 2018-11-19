@@ -1,31 +1,32 @@
 // Use the internal node.js assertion library
 const assert = require("assert");
 
-const matchers = (description) => (result) => ({
-	toBe: (expected) => assert.strictEqual(result, expected, description),
-	toEqual: (expected) => assert.deepStrictEqual(result, expected, description),
-})
 
-const expectInContect = (description) => {
+const expectInContext = (description) => {
 	let asserted = 0;
 
 	const interceptAssertion = {
-		get(target, assertionName, receiver) {
+		get: function(target, assertionName, receiver) {
 			const assertion = target[assertionName];
-			return function (...args) {
-				asserted++;
-				return assertion.apply(this, args);
-			};
+			if (typeof assertion === "function") {
+				return function (...args) {
+					asserted++;
+					return assertion.apply(this, args);
+				};
+			}
+			return assertion;
 		}
 	};
-	const matchers = matchers(description);
 
-	const expect = (result) => new Proxy(matchers, interceptAssertion);
+	const expect = (result) => new Proxy({
+		toBe: (expected) => assert.strictEqual(result, expected, description),
+		toEqual: (expected) => assert.deepStrictEqual(result, expected, description),
+	}, interceptAssertion);
 
 	expect.assertions = (howmany) => {
-		expect._planned = howmany;
+		expect.planned = howmany;
 	}
-	expect._asserted = asserted;
+	expect.asserted = asserted;
 
 	return expect;
 }
@@ -43,12 +44,13 @@ const describe = async (description, test) => {
 		await test(expect);
 		testResult.success = true;
 	} catch (err) {
+		//console.error(err);
 		testResult.success = false;
 		testResult.errors = err;
 	}
-	testResult.planned = expect._planned;
-	testResult.assertions = expect._assertions;
-	testResult.elapsed = new Date() - start;
+	testResult.elapsed  = new Date() - start;
+	testResult.planned  = expect.planned;
+	testResult.asserted = expect.asserted;
 	console.dir(JSON.stringify(testResult));
 }
 
@@ -62,6 +64,5 @@ const it = (msg, test) => describe(`  * ${msg} :`, test);
 
 module.exports = {
 	describe,
-	it,
-	expect,
+	it
 }
