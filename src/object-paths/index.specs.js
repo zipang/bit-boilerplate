@@ -1,7 +1,9 @@
 const { resolveObjects } = require("./index.js");
-const { it, expect } = require("../describe/");
+const { it } = require("../describe/");
 
-it("works", () => {
+it("works", async (expect) => {
+	expect.assertions(2);
+
 	const tests = [
 		{
 			input: {
