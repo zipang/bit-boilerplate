@@ -2,7 +2,6 @@ const { resolveObjects } = require("./index.js");
 const { it } = require("../describe/");
 
 it("works", async (expect) => {
-	expect.assertions(2);
 
 	const tests = [
 		{
@@ -25,6 +24,7 @@ it("works", async (expect) => {
 		}
 	];
 
+	expect.assertions(tests.length);
 	tests.forEach(test=>{
 		expect(resolveObjects(test.input)).toEqual(test.output);
 	});

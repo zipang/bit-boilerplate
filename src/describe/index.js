@@ -5,9 +5,14 @@ const assert = require("assert");
 const expectInContext = (description) => {
 	let asserted = 0;
 
+	const handleAsserted = {
+		get: (target, propertyName, receiver) =>
+			(propertyName === "asserted") ? asserted : target[propertyName]
+	}
+
 	const interceptAssertion = {
-		get: function(target, assertionName, receiver) {
-			const assertion = target[assertionName];
+		get: function(target, propertyName, receiver) {
+			const assertion = target[propertyName];
 			if (typeof assertion === "function") {
 				return function (...args) {
 					asserted++;
@@ -26,9 +31,8 @@ const expectInContext = (description) => {
 	expect.assertions = (howmany) => {
 		expect.planned = howmany;
 	}
-	expect.asserted = asserted;
 
-	return expect;
+	return new Proxy(expect, handleAsserted);
 }
 
 /**
