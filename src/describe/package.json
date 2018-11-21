@@ -6,7 +6,5 @@
   "author": "zipang",
   "license": "MIT",
   "private": false,
-  "dependencies": {
-    "must": "^0.13.4"
-  }
+  "dependencies": {}
 }
