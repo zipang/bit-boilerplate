@@ -1,6 +1,8 @@
 {
-    "env": {},
-    "dependencies": {},
-    "componentsDefaultDirectory": "src/{name}",
-    "packageManager": "yarn"
+	"env": {},
+	"dependencies": {},
+	"componentsDefaultDirectory": "src/{name}",
+	"packageManager": "yarn",
+	"useWorkspaces": true,
+	"manageWorkspaces": true
 }
