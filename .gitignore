@@ -8,6 +8,7 @@ Thumbs.db
 *~
 
 .bit/
+.cache/
 .bitmap
 .vscode/
 
