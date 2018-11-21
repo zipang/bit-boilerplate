@@ -14,9 +14,10 @@
 		"test coverage",
 		"boilerplate"
 	],
+	"workspaces": [
+		"src/*"
+	],
 	"files": [
-		"src",
-		"dist/debug.js",
 		"LICENSE",
 		"README.md"
 	],
