@@ -1,7 +1,10 @@
-// Use the internal node.js assertion library
-const assert = require("assert");
+const assertionsFor = require("./matchers");
 
-
+/**
+ * Build an expect function in the context of a test
+ * @param {String} description of the test
+ * @return {Function} expect: (obj) => assertable
+ */
 const expectInContext = (description) => {
 	let asserted = 0;
 
@@ -23,10 +26,7 @@ const expectInContext = (description) => {
 		}
 	};
 
-	const expect = (result) => new Proxy({
-		toBe: (expected) => assert.strictEqual(result, expected, description),
-		toEqual: (expected) => assert.deepStrictEqual(result, expected, description),
-	}, interceptAssertion);
+	const expect = (result) => new Proxy(assertionsFor(result, description), interceptAssertion);
 
 	expect.assertions = (howmany) => {
 		expect.planned = howmany;
@@ -38,33 +38,40 @@ const expectInContext = (description) => {
 /**
  * Specify the context of execution for a new test suite
  * @param {String} description
- * @param {Function} testSuite
+ * @param {Function} test
  */
 const describe = async (description, test) => {
-	let start = new Date(),
+
+	let testResult = { title: description },
 		expect = expectInContext(description),
-		testResult = { title: description };
+		start = Date.now();
+
 	try {
 		await test(expect);
-		testResult.success = true;
+		testResult.pass = true;
 	} catch (err) {
 		//console.error(err);
-		testResult.success = false;
-		testResult.errors = err;
+		testResult.pass = false;
+		testResult.err = {
+			message: `${err.message} FAILED :
+expected ${JSON.stringify(err.expected)}
+got ${JSON.stringify(err.actual)}`,
+			stack: err.stack
+		}
 	}
-	testResult.elapsed  = new Date() - start;
+	testResult.duration = Date.now() - start;
 	testResult.planned  = expect.planned;
 	testResult.asserted = expect.asserted;
-	console.dir(JSON.stringify(testResult));
+	console.dir(testResult);
 }
 
 
 /**
- * This is a part of a test suite
- * @param {String} msg
+ * This is a single test unit
+ * @param {String} purpose
  * @param {Function} test
  */
-const it = (msg, test) => describe(`  * ${msg} :`, test);
+const it = (purpose, test) => describe(`  * ${purpose} :`, test);
 
 module.exports = {
 	describe,
