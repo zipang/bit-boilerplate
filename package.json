@@ -1,37 +1,30 @@
 {
-	"name": "bit-boilerplate",
-	"version": "0.1.0",
-	"author": "zipang",
-	"license": "MIT",
-	"description": "A minimal boilerplate to distribute a simple library through npm",
-	"main": "src/index.js",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/zipang/bit-boilerplate.git"
-	},
-	"keywords": [
-		"minimal",
-		"test coverage",
-		"boilerplate"
-	],
-	"workspaces": [
-		"src/*"
-	],
-	"files": [
-		"LICENSE",
-		"README.md"
-	],
-	"scripts": {
-		"dev": "",
-		"build": "parcel build src",
-		"test": "jest"
-	},
-	"jest": {
-		"verbose": true,
-		"collectCoverage": true
-	},
-	"private": false,
-	"devDependencies": {
-		"jest": "^23.6.0"
-	}
+  "name": "bit-boilerplate",
+  "version": "0.1.0",
+  "author": "zipang",
+  "license": "MIT",
+  "description": "A minimal boilerplate to distribute a simple library through npm",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zipang/bit-boilerplate.git"
+  },
+  "keywords": [
+    "minimal",
+    "test coverage",
+    "boilerplate"
+  ],
+  "workspaces": [
+    "src/**/*"
+  ],
+  "files": [
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "",
+    "build": "parcel build src",
+    "test": "jest"
+  },
+  "private": true,
+  "devDependencies": {}
 }

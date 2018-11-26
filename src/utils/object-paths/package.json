@@ -1,0 +1,9 @@
+{
+  "name": "object-paths",
+  "version": "0.1.0",
+  "description": "Utilities to expand/wrap object paths",
+  "main": "index.js",
+  "author": "zipang",
+  "license": "MIT",
+  "private": false
+}

@@ -1,7 +1,8 @@
 const { resolveObjects } = require("./index.js");
-const { it } = require("../describe/");
 
-it("works", async (expect) => {
+it("resolves objects keys", async () => {
+
+	console.log("Starting test");
 
 	const tests = [
 		{

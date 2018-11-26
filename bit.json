@@ -1,8 +1,9 @@
 {
-	"env": {},
-	"dependencies": {},
-	"componentsDefaultDirectory": "src/{name}",
-	"packageManager": "yarn",
-	"useWorkspaces": true,
-	"manageWorkspaces": true
+    "env": {
+        "tester": "bit.envs/testers/jest@0.0.34"
+    },
+    "dependencies": {},
+    "componentsDefaultDirectory": "src/{namespace}/{name}",
+    "packageManager": "yarn",
+    "useWorkspaces": true
 }
