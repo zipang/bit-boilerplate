@@ -1,7 +1,7 @@
 {
   "name": "describe",
   "version": "0.1.0",
-  "description": "A minimalist test runner with Must",
+  "description": "A minimalistic test framework with a syntax compatible with jest and no dependencies",
   "main": "index.js",
   "author": "zipang",
   "license": "MIT",
