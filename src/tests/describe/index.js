@@ -1,5 +1,6 @@
 const assertionsFor = require("./matchers");
 
+
 /**
  * Build an expect function in the context of a test
  * @param {String} description of the test
@@ -59,10 +60,15 @@ got ${JSON.stringify(err.actual)}`,
 			stack: err.stack
 		}
 	}
+	testResult.start = start; // really important to reorder all test results after their asynchronous execution
 	testResult.duration = Date.now() - start;
 	testResult.planned  = expect.planned;
 	testResult.asserted = expect.asserted;
 	console.dir(testResult);
+
+	if (testResults) { // this global object is made available by the test runner
+		testResults.append(testResult);
+	}
 }
 
 
