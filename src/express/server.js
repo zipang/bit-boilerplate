@@ -1,10 +1,12 @@
-let express = require('express');
-let bodyParser = require('body-parser');
+'use strict';
 
-let app = express();
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
 app.use(bodyParser.json());
 
-let todos = [{id: 'jkhsdjkf', content: 'review this code'}];
+const todos = [{id: 'jkhsdjkf', content: 'review this code'}];
 
 app.post('/todos', (req, res) => {
 	todos.push({
