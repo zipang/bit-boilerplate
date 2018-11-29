@@ -29,12 +29,12 @@ app.put('/todos/:id', (req, res) => {
 	res.sendStatus(200);
 });
 
-app.get('/todos/:id', (req, res) => {
-	res.send(todos.get(req.params.id));
+app.get('/todos/', (req, res) => {
+	res.send(Array.from(todos.values()));
 });
 
-app.get('/todos/all', (req, res) => {
-	res.send(Array.from(todos.values()));
+app.get('/todos/:id', (req, res) => {
+	res.send(todos.get(req.params.id));
 });
 
 app.get('/', (req, res) => {
