@@ -1,5 +1,5 @@
 const { resolveObjects } = require("./index.js");
-const { it } = require("../describe/");
+const { it } = require("../../tests/describe/");
 
 it("works", async (expect) => {
 
