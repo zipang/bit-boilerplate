@@ -11,6 +11,8 @@
 	},
 	"keywords": [
 		"minimal",
+		"components",
+		"bit-src",
 		"test coverage",
 		"boilerplate"
 	],
@@ -30,7 +32,7 @@
 		"verbose": true,
 		"collectCoverage": true
 	},
-	"private": false,
+	"private": true,
 	"devDependencies": {
 		"jest": "^23.6.0"
 	}
