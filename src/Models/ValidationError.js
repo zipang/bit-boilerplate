@@ -1,5 +1,5 @@
 
-module.exports = class ValidationError extends Error {
+module.exports = class ValidationError extends TypeError {
 
 	/**
 	 * A straightforward validation error on a model

@@ -1,5 +1,5 @@
 const schema   = require('./schema.json');
-const validate = require('./validate');
+const { validate } = require('./validate');
 
 /**
  * Todos factory
@@ -15,7 +15,9 @@ const create = (data) => {
 			let modified = Object.assign({}, data);
 			modified[prop] = value;
 			validate(modified);
-			return Reflect.set(...arguments);
+			// seems ok
+			obj[prop] = value;
+			return true;
 		}
 	};
 
