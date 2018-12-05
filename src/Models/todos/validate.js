@@ -3,6 +3,7 @@ const ValidationError = require('../ValidationError');
 /**
  * Validate some data against the todos schema
  * @param {Object} data
+ * @throws {ValidationError} when data does not conform to model's schema
  */
 const validate = (data) => {
 	const errors = [];
@@ -23,4 +24,4 @@ const validate = (data) => {
 }
 
 
-module.exports = { validate };
+module.exports = validate;
