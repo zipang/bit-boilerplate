@@ -3,6 +3,7 @@
  */
 module.exports = (req, res) => {
 	const store = req.todos;
+	const params = req.params;
 
-	res.send(Array.from(store.values()));
+	res.send(store.find());
 }

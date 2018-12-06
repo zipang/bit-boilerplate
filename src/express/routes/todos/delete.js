@@ -2,9 +2,9 @@
  * DELETE A TODO ITEM
  */
 module.exports = (req, res) => {
-	const store = req.dodos;
+	const store = req.todos;
 
-	store.remove(req.params.id);
+	store.delete(req.params.id);
 
 	res.send();
 }
