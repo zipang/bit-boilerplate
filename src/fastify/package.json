@@ -1,0 +1,13 @@
+{
+  "name": "fastify-demo",
+  "version": "0.1.0",
+  "description": "A minimalist REST API server created with fastify",
+  "main": "server.js",
+  "author": "zipang",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "fastify": "^2.0.0",
+    "fastify-routes": "^2.0.0"
+  }
+}
