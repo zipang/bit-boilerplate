@@ -1,7 +1,9 @@
 {
-	"env": {},
+	"env": {
+		"tester": "bit-boilerplate/tests/env"
+	},
 	"dependencies": {},
-	"componentsDefaultDirectory": "src/{name}",
+	"componentsDefaultDirectory": "src/",
 	"packageManager": "yarn",
 	"useWorkspaces": true,
 	"manageWorkspaces": true
