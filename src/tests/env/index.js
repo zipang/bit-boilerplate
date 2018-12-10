@@ -2,7 +2,7 @@
 const path = require("path");
 
 // test results should be appended to this array
-const testResults = [];
+const testResults = global.testResults = [];
 
 testResults.append = (testResult) => {
 	// Find the position where to insert the new result
@@ -20,7 +20,7 @@ testResults.append = (testResult) => {
  * @param {String} specFile full path to a spec file
  * @return {Object} test results in bit format
  */
-function run(specFile) {
+async function run(specFile) {
 	let start = new Date();
 	let failures = [];
 	let testName = path.basename(specFile);
@@ -46,12 +46,12 @@ function run(specFile) {
 }
 
 module.exports = {
-    run,
-    globals: {
-        testResults
-    },
-    modules: {
-        // Your modules here...
-    }
+	run,
+	globals: {
+		testResults
+	},
+	modules: {
+		// Your modules here...
+	}
 };
 

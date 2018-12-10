@@ -66,8 +66,8 @@ got ${JSON.stringify(err.actual)}`,
 	testResult.asserted = expect.asserted;
 	console.dir(testResult);
 
-	if (this.testResults) { // this global object is made available by the test runner
-		this.testResults.append(testResult);
+	if (global.testResults) { // this global object is made available by the test runner
+		global.testResults.append(testResult);
 	}
 }
 
